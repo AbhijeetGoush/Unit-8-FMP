@@ -10,12 +10,18 @@ public class EnemyPatrol : MonoBehaviour
     public float speed;
     private Transform currentPoint;
     HelperScript helper;
+    public Transform player;
+    public Transform skeleton;
+    private Animator anim;
+    BoxCollider2D boxCollider;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         currentPoint = pointB.transform;
         helper = GetComponent<HelperScript>();
+        boxCollider = GetComponent<BoxCollider2D>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -33,7 +39,7 @@ public class EnemyPatrol : MonoBehaviour
             helper.FlipObject(true);
         }
 
-        if(Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == pointB.transform)
+        if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == pointB.transform)
         {
             currentPoint = pointA.transform;
         }
@@ -42,4 +48,24 @@ public class EnemyPatrol : MonoBehaviour
             currentPoint = pointB.transform;
         }
     }
+
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            anim.Play("SkeletonAttack");
+            speed = 0f;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            anim.Play("SkeletonWalk");
+            speed = 2f;
+        }
+    }
+
+
 }

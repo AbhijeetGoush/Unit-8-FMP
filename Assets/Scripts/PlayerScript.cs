@@ -14,6 +14,7 @@ public class PlayerScript : MonoBehaviour
     const string PLAYER_RUN = "PlayerRun";
     const string PLAYER_JUMP = "PlayerJump";
     const string PLAYER_ATTACK = "PlayerAttack";
+    public int playerhealth;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +22,7 @@ public class PlayerScript : MonoBehaviour
         helper = GetComponent<HelperScript>();
         touchingplatform = false;
         anim = GetComponent<Animator>();
+        playerhealth = 100;
         //Jumping = false;
     }
 
@@ -28,7 +30,7 @@ public class PlayerScript : MonoBehaviour
     void Update()
     {
         Vector2 vel = rb.velocity;
-        
+
         if (Input.GetKey(KeyCode.D))
         {
             ChangeAnimationState(PLAYER_RUN);
