@@ -9,11 +9,13 @@ public class EnemyPatrol : MonoBehaviour
     Rigidbody2D rb;
     public float speed;
     private Transform currentPoint;
+    HelperScript helper;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         currentPoint = pointB.transform;
+        helper = GetComponent<HelperScript>();
     }
 
     // Update is called once per frame
@@ -23,10 +25,12 @@ public class EnemyPatrol : MonoBehaviour
         if (currentPoint == pointB.transform)
         {
             rb.velocity = new Vector2(speed, 0);
+            helper.FlipObject(false);
         }
         else
         {
             rb.velocity = new Vector2(-speed, 0);
+            helper.FlipObject(true);
         }
 
         if(Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == pointB.transform)
