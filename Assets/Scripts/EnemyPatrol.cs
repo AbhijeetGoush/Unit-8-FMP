@@ -14,6 +14,11 @@ public class EnemyPatrol : MonoBehaviour
     public Transform skeleton;
     private Animator anim;
     BoxCollider2D boxCollider;
+    private string currentState;
+    bool enemyAttack;
+    const string SKELETONPATROL = "SkeletonWalk";
+    const string SKELETONATTACK = "SkeletonAttack";
+    EStates state;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,11 +27,33 @@ public class EnemyPatrol : MonoBehaviour
         helper = GetComponent<HelperScript>();
         boxCollider = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
+        state = EStates.Patrol;
+        enemyAttack = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        DoLogic();
+    }
+
+    void DoLogic()
+    {
+        if (state == EStates.Patrol)
+        {
+            PatrolEnemy();
+        }
+        if (state == EStates.Attack)
+        {
+            EnemyAttack();
+        }
+        
+    }
+
+    void PatrolEnemy()
+    {
+        ChangeAnimationState(SKELETONPATROL);
+        speed = 2f;
         Vector2 point = currentPoint.position - transform.position;
         if (currentPoint == pointB.transform)
         {
@@ -47,14 +74,36 @@ public class EnemyPatrol : MonoBehaviour
         {
             currentPoint = pointB.transform;
         }
+        if (enemyAttack == true)
+        {
+            state = EStates.Attack;
+        }
     }
 
+    void EnemyAttack()
+    {
+        ChangeAnimationState(SKELETONATTACK);
+        speed = 0f;
+        
+        if (enemyAttack == false)
+        {
+            state = EStates.Patrol;
+        }
+    }
+
+    void ChangeAnimationState(string newState)
+    {
+        if (currentState == newState) return;
+
+        anim.Play(newState);
+
+        currentState = newState;
+    }
     void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            anim.Play("SkeletonAttack");
-            speed = 0f;
+            enemyAttack = true;
         }
     }
 
@@ -62,8 +111,7 @@ public class EnemyPatrol : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            anim.Play("SkeletonWalk");
-            speed = 2f;
+            enemyAttack = false;
         }
     }
 
