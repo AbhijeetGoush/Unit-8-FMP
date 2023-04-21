@@ -194,12 +194,12 @@ TextureImporter:
       name: Jump_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 140
-        height: 140
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 51
+        y: 57
+        width: 32
+        height: 37
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -215,12 +215,12 @@ TextureImporter:
       name: Jump_1
       rect:
         serializedVersion: 2
-        x: 140
-        y: 0
-        width: 140
-        height: 140
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 191
+        y: 57
+        width: 32
+        height: 37
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -236,12 +236,12 @@ TextureImporter:
       name: Jump_2
       rect:
         serializedVersion: 2
-        x: 280
-        y: 0
-        width: 140
-        height: 140
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 331
+        y: 57
+        width: 32
+        height: 37
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -257,12 +257,12 @@ TextureImporter:
       name: Jump_3
       rect:
         serializedVersion: 2
-        x: 420
-        y: 0
-        width: 140
-        height: 140
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 471
+        y: 57
+        width: 32
+        height: 37
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

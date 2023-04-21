@@ -16,6 +16,7 @@ public class PlayerScripts : MonoBehaviour
     const string PLAYER_ATTACK = "PlayerAttack";
     public int playerhealth;
     public GameObject attackPoint;
+    public GameObject attackpoint1;
     public float radius;
     public LayerMask enemies;
     // Start is called before the first frame update
@@ -92,7 +93,7 @@ public class PlayerScripts : MonoBehaviour
             state = States.Jump;
             rb.velocity = new Vector2(0, 6);
         }
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             state = States.Attack;
         }
@@ -100,12 +101,29 @@ public class PlayerScripts : MonoBehaviour
 
     void PlayerJump()
     {
+        Vector2 vel = rb.velocity;
+
+        if (grounded == false)
+        {
+            ChangeAnimationState(PLAYER_JUMP);
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            vel.x = 4;
+            helper.FlipObject(false);
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            vel.x = -4;
+            helper.FlipObject(true);
+        }
         // player is jumping, check for hitting the ground
         if (grounded == true)
         {
             //player has landed on floor
             state = States.Idle;
         }
+        rb.velocity = vel;
     }
 
     void PlayerWalk()
@@ -139,6 +157,7 @@ public class PlayerScripts : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Mouse0))
         {
+            vel.x = 0;
             state = States.Attack;
         }
         rb.velocity = vel;
@@ -186,9 +205,18 @@ public class PlayerScripts : MonoBehaviour
             grounded = true;
         }
     }
+    public void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "platform")
+        {
+            state = States.Jump;
+        }
+    }
 
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(attackPoint.transform.position, radius);
     }
+
+
 }

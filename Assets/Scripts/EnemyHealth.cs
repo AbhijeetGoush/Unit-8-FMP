@@ -7,6 +7,7 @@ public class EnemyHealth : MonoBehaviour
     public float health;
     public float currentHealth;
     Animator anim;
+    EnemyPatrol enemy;
     
     // Start is called before the first frame update
     void Start()
@@ -22,13 +23,16 @@ public class EnemyHealth : MonoBehaviour
         if (health < currentHealth)
         {
             currentHealth = health;
-            
             anim.Play("SkeletonTakeHit");
+
+            enemy = GetComponent<EnemyPatrol>();
+            enemy.EnemyTakeHit();
+
         }
 
         if (health <= 0)
         {
-            Debug.Log("enemy is dead");
+            enemy.EnemyDead();
         }
     }
 }

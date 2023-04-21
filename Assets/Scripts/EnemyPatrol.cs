@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class EnemyPatrol : MonoBehaviour
@@ -10,14 +11,17 @@ public class EnemyPatrol : MonoBehaviour
     public float speed;
     private Transform currentPoint;
     HelperScript helper;
+    EnemyHealth eHealth;
     public Transform player;
     public Transform skeleton;
     private Animator anim;
     BoxCollider2D boxCollider;
     private string currentState;
     bool enemyAttack;
-    const string SKELETONPATROL = "SkeletonWalk";
-    const string SKELETONATTACK = "SkeletonAttack";
+    const string SKELETON_PATROL = "SkeletonWalk";
+    const string SKELETON_ATTACK = "SkeletonAttack";
+    const string SKELETON_TAKE_HIT = "SkeletonTakeHit";
+    const string SKELETON_DEATH = "SkeletonDeath";
     EStates state;
     // Start is called before the first frame update
     void Start()
@@ -29,12 +33,18 @@ public class EnemyPatrol : MonoBehaviour
         anim = GetComponent<Animator>();
         state = EStates.Patrol;
         enemyAttack = false;
+        eHealth = GetComponent<EnemyHealth>();
+        eHealth.health = 100;
     }
 
     // Update is called once per frame
     void Update()
     {
         DoLogic();
+        if (eHealth.health <=0)
+        {
+            EnemyDead();
+        }
     }
 
     void DoLogic()
@@ -47,12 +57,19 @@ public class EnemyPatrol : MonoBehaviour
         {
             EnemyAttack();
         }
-        
+        if (state == EStates.TakeHit)
+        {
+            EnemyTakeHit();
+        }
+        if (state == EStates.Dead)
+        {
+            EnemyDead();
+        }
     }
 
     void PatrolEnemy()
     {
-        ChangeAnimationState(SKELETONPATROL);
+        ChangeAnimationState(SKELETON_PATROL);
         speed = 2f;
         Vector2 point = currentPoint.position - transform.position;
         if (currentPoint == pointB.transform)
@@ -78,18 +95,39 @@ public class EnemyPatrol : MonoBehaviour
         {
             state = EStates.Attack;
         }
+        if (eHealth.health <= 0)
+        {
+            state = EStates.Dead;
+        }
     }
 
     void EnemyAttack()
     {
-        ChangeAnimationState(SKELETONATTACK);
+        ChangeAnimationState(SKELETON_ATTACK);
         speed = 0f;
         
         if (enemyAttack == false)
         {
             state = EStates.Patrol;
         }
+        if (eHealth.health <= 0)
+        {
+            state = EStates.Dead;
+        }
+        
     }
+
+    public void EnemyTakeHit()
+    {
+        ChangeAnimationState(SKELETON_TAKE_HIT);
+    }
+
+    public void EnemyDead()
+    {
+        Destroy(this.gameObject);
+    }
+
+    
 
     void ChangeAnimationState(string newState)
     {
@@ -104,6 +142,8 @@ public class EnemyPatrol : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             enemyAttack = true;
+            ChangeAnimationState(SKELETON_ATTACK);
+            speed = 0f;
         }
     }
 
