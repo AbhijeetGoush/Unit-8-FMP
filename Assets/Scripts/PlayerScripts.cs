@@ -17,7 +17,6 @@ public class PlayerScripts : MonoBehaviour
     public int playerHealth;
     public GameObject attackPoint;
     public GameObject attackpoint1;
-    public Camera cam;
     public float radius;
     public LayerMask enemies;
     
