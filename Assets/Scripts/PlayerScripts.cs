@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerScripts : MonoBehaviour
 {
-    States state;
+    public States state;
     Rigidbody2D rb;
     bool grounded;
     Animator anim;
@@ -19,6 +19,7 @@ public class PlayerScripts : MonoBehaviour
     public GameObject attackpoint1;
     public float radius;
     public LayerMask enemies;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +28,7 @@ public class PlayerScripts : MonoBehaviour
         grounded = false;
         anim = GetComponent<Animator>();
         helper = GetComponent<HelperScript>();
+        playerhealth = 100;
     }
 
     // Update is called once per frame
@@ -35,6 +37,11 @@ public class PlayerScripts : MonoBehaviour
         DoLogic();
         Vector2 vel = rb.velocity;
         rb.velocity = vel;
+
+        if (playerhealth <= 0)
+        {
+            state = States.Dead;
+        }
     }
 
     void FixedUpdate()
@@ -67,6 +74,7 @@ public class PlayerScripts : MonoBehaviour
         {
             PlayerAttack();
         }
+        
     }
 
     void PlayerIdle()
@@ -184,9 +192,16 @@ public class PlayerScripts : MonoBehaviour
         }
     }
 
+    public void PlayerTakeDamage()
+    {
+        playerhealth -= 25;
+    }
     void PlayerDead()
     {
-
+        if (playerhealth <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     void ChangeAnimationState(string newState)

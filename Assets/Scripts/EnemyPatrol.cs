@@ -12,6 +12,7 @@ public class EnemyPatrol : MonoBehaviour
     private Transform currentPoint;
     HelperScript helper;
     EnemyHealth eHealth;
+    PlayerScripts playerS;
     public Transform player;
     public Transform skeleton;
     private Animator anim;
@@ -35,6 +36,8 @@ public class EnemyPatrol : MonoBehaviour
         enemyAttack = false;
         eHealth = GetComponent<EnemyHealth>();
         eHealth.health = 100;
+        playerS = GetComponent<PlayerScripts>();
+
     }
 
     // Update is called once per frame
@@ -44,6 +47,10 @@ public class EnemyPatrol : MonoBehaviour
         if (eHealth.health <=0)
         {
             EnemyDead();
+        }
+        if (enemyAttack == false)
+        {
+            state = EStates.Patrol;
         }
     }
 
@@ -120,9 +127,11 @@ public class EnemyPatrol : MonoBehaviour
         }
     }
 
-    public void EnemyTakeHit()
+    public async void EnemyTakeHit()
     {
         ChangeAnimationState(SKELETON_TAKE_HIT);
+        await Task.Delay(140);
+        state = EStates.Attack;
     }
 
     public void EnemyDead()
@@ -130,7 +139,10 @@ public class EnemyPatrol : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    
+    void EnemyDamagePlayer()
+    {
+        GetComponent<PlayerScripts>().playerhealth -= 25;
+    }
 
     void ChangeAnimationState(string newState)
     {
