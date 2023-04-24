@@ -4251,6 +4251,10 @@ PrefabInstance:
       propertyPath: pointB
       value: 
       objectReference: {fileID: 283644047}
+    - target: {fileID: 3982347148959643321, guid: 3a52efc7d27abbb4e9224d4b0a827789, type: 3}
+      propertyPath: playerO
+      value: 
+      objectReference: {fileID: 1118580633}
     - target: {fileID: 3982347148959643326, guid: 3a52efc7d27abbb4e9224d4b0a827789, type: 3}
       propertyPath: m_RootOrder
       value: 21
@@ -6702,9 +6706,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  playerhealth: 0
+  playerHealth: 100
   attackPoint: {fileID: 1784801073}
   attackpoint1: {fileID: 0}
+  cam: {fileID: 519420031}
   radius: 0.66
   enemies:
     serializedVersion: 2
@@ -10941,6 +10946,10 @@ PrefabInstance:
       propertyPath: pointB
       value: 
       objectReference: {fileID: 27720580}
+    - target: {fileID: 3982347148959643321, guid: 3a52efc7d27abbb4e9224d4b0a827789, type: 3}
+      propertyPath: playerO
+      value: 
+      objectReference: {fileID: 1118580633}
     - target: {fileID: 3982347148959643326, guid: 3a52efc7d27abbb4e9224d4b0a827789, type: 3}
       propertyPath: m_RootOrder
       value: 18

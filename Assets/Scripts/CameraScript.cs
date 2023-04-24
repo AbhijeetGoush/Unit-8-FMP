@@ -16,9 +16,13 @@ public class CameraScript : MonoBehaviour
 
     void Follow()
     {
-        Vector3 playerPosition = player.position + offset;
-        Vector3 smoothPosition = Vector2.Lerp(transform.position, playerPosition, smoothFactor*Time.fixedDeltaTime);
-        transform.position = playerPosition;
+        if (player != null)
+        {
+            Vector3 playerPosition = player.position + offset;
+            Vector3 smoothPosition = Vector2.Lerp(transform.position, playerPosition, smoothFactor * Time.fixedDeltaTime);
+            transform.position = playerPosition;
+        }
+        
     }
 
 }

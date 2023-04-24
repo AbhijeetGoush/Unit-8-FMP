@@ -14,9 +14,10 @@ public class PlayerScripts : MonoBehaviour
     const string PLAYER_RUN = "PlayerRun";
     const string PLAYER_JUMP = "PlayerJump";
     const string PLAYER_ATTACK = "PlayerAttack";
-    public int playerhealth;
+    public int playerHealth;
     public GameObject attackPoint;
     public GameObject attackpoint1;
+    public Camera cam;
     public float radius;
     public LayerMask enemies;
     
@@ -28,7 +29,7 @@ public class PlayerScripts : MonoBehaviour
         grounded = false;
         anim = GetComponent<Animator>();
         helper = GetComponent<HelperScript>();
-        playerhealth = 100;
+        playerHealth = 100;
     }
 
     // Update is called once per frame
@@ -38,7 +39,7 @@ public class PlayerScripts : MonoBehaviour
         Vector2 vel = rb.velocity;
         rb.velocity = vel;
 
-        if (playerhealth <= 0)
+        if (playerHealth <= 0)
         {
             state = States.Dead;
         }
@@ -194,14 +195,15 @@ public class PlayerScripts : MonoBehaviour
 
     public void PlayerTakeDamage()
     {
-        playerhealth -= 25;
+        playerHealth -= 25;
     }
     void PlayerDead()
     {
-        if (playerhealth <= 0)
+        if (playerHealth <= 0)
         {
             Destroy(this.gameObject);
         }
+        
     }
 
     void ChangeAnimationState(string newState)

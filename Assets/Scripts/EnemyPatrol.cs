@@ -23,6 +23,7 @@ public class EnemyPatrol : MonoBehaviour
     const string SKELETON_ATTACK = "SkeletonAttack";
     const string SKELETON_TAKE_HIT = "SkeletonTakeHit";
     const string SKELETON_DEATH = "SkeletonDeath";
+    public GameObject playerO;
     EStates state;
     // Start is called before the first frame update
     void Start()
@@ -36,7 +37,8 @@ public class EnemyPatrol : MonoBehaviour
         enemyAttack = false;
         eHealth = GetComponent<EnemyHealth>();
         eHealth.health = 100;
-        playerS = GetComponent<PlayerScripts>();
+        playerS = playerO.GetComponent<PlayerScripts>();
+        
 
     }
 
@@ -141,7 +143,7 @@ public class EnemyPatrol : MonoBehaviour
 
     void EnemyDamagePlayer()
     {
-        GetComponent<PlayerScripts>().playerhealth -= 25;
+        playerS.playerHealth -= 25;
     }
 
     void ChangeAnimationState(string newState)
@@ -170,5 +172,5 @@ public class EnemyPatrol : MonoBehaviour
         }
     }
 
-
+    
 }
