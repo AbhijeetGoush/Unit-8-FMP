@@ -114,7 +114,10 @@ public class EnemyPatrol : MonoBehaviour
         {
             state = EStates.Dead;
         }
-        
+        if (eHealth.health < eHealth.currentHealth)
+        {
+            state = EStates.TakeHit;
+        }
     }
 
     public void EnemyTakeHit()
