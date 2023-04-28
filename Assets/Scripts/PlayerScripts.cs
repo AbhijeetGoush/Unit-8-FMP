@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class PlayerScripts : MonoBehaviour
@@ -16,6 +18,7 @@ public class PlayerScripts : MonoBehaviour
     const string PLAYER_RUN = "PlayerRun";
     const string PLAYER_JUMP = "PlayerJump";
     const string PLAYER_ATTACK = "PlayerAttack";
+    const string PLAYER_DEATH = "PlayerDeath";
     public int playerHealth;
     public GameObject attackPoint;
     public GameObject attackpoint1;
@@ -213,11 +216,14 @@ public class PlayerScripts : MonoBehaviour
     {
         playerHealth -= 25;
     }
-    void PlayerDead()
+    async void PlayerDead()
     {
         if (playerHealth <= 0)
         {
-            Destroy(this.gameObject);
+            ChangeAnimationState(PLAYER_DEATH);
+            await Task.Delay(1000);
+            SceneManager.LoadScene("GameOver");
+
         }
         
     }
