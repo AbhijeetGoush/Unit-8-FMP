@@ -70,6 +70,7 @@ public class PlayerScripts : MonoBehaviour
         {
             PlayerDead();
         }
+
         if (state == States.Attack)
         {
             PlayerAttack();
