@@ -22,6 +22,7 @@ public class PlayerScripts : MonoBehaviour
     public int playerHealth;
     public GameObject attackPoint;
     public GameObject attackpoint1;
+    public PlayerScripts player;
     public float radius;
     public LayerMask enemies;
     public LayerMask bosses;
@@ -197,7 +198,7 @@ public class PlayerScripts : MonoBehaviour
         Collider2D[] enemy = Physics2D.OverlapCircleAll(attackPoint.transform.position, radius, enemies);
         foreach (Collider2D enemyGameObject in enemy)
         {
-            Debug.Log("hit enemy");
+            
             enemyGameObject.GetComponent<EnemyHealth>().health -= 10;
         }
         
@@ -219,12 +220,12 @@ public class PlayerScripts : MonoBehaviour
     }
     async void PlayerDead()
     {
-        if (this.gameObject != null)
+        if (playerHealth <= 0)
         {
-            if (playerHealth <= 0)
+            ChangeAnimationState(PLAYER_DEATH);
+            await Task.Delay(1350);
+            if (player != null)
             {
-                ChangeAnimationState(PLAYER_DEATH);
-                await Task.Delay(1000);
                 Destroy(this.gameObject);
                 SceneManager.LoadScene("GameOver");
             }
