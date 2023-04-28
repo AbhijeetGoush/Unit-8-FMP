@@ -50,6 +50,7 @@ public class PlayerScripts : MonoBehaviour
         {
             state = States.Dead;
         }
+        
     }
 
     void FixedUpdate()
@@ -218,15 +219,17 @@ public class PlayerScripts : MonoBehaviour
     }
     async void PlayerDead()
     {
-        if (playerHealth <= 0)
+        if (this.gameObject != null)
         {
-            ChangeAnimationState(PLAYER_DEATH);
-            await Task.Delay(1000);
-            Destroy(this.gameObject);
-            SceneManager.LoadScene("GameOver");
-
+            if (playerHealth <= 0)
+            {
+                ChangeAnimationState(PLAYER_DEATH);
+                await Task.Delay(1000);
+                Destroy(this.gameObject);
+                SceneManager.LoadScene("GameOver");
+            }
         }
-        
+
     }
 
     void ChangeAnimationState(string newState)
