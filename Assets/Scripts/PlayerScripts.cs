@@ -222,6 +222,7 @@ public class PlayerScripts : MonoBehaviour
         {
             ChangeAnimationState(PLAYER_DEATH);
             await Task.Delay(1000);
+            Destroy(this.gameObject);
             SceneManager.LoadScene("GameOver");
 
         }
