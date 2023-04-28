@@ -62,7 +62,6 @@ public class BossChase : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            print("stopping");
             speed = 0;
             
             anim.SetBool("Attack", true);

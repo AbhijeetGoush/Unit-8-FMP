@@ -22,7 +22,7 @@ public class BossHealth : MonoBehaviour
         if (health < currentHealth)
         {
             currentHealth = health;
-            anim.Play("SkeletonTakeHit");
+            anim.Play("SkeletonBossTakeHit");
 
             boss = GetComponent<BossChase>();
             boss.BossTakeHit();

@@ -9,6 +9,8 @@ public class PlayerScripts : MonoBehaviour
     bool grounded;
     Animator anim;
     HelperScript helper;
+    EnemyHealth eHealth;
+    BossHealth bHealth;
     private string currentState;
     const string PLAYER_IDLE = "PlayerIdle";
     const string PLAYER_RUN = "PlayerRun";
@@ -19,6 +21,7 @@ public class PlayerScripts : MonoBehaviour
     public GameObject attackpoint1;
     public float radius;
     public LayerMask enemies;
+    public LayerMask bosses;
     
     // Start is called before the first frame update
     void Start()
@@ -29,6 +32,8 @@ public class PlayerScripts : MonoBehaviour
         anim = GetComponent<Animator>();
         helper = GetComponent<HelperScript>();
         playerHealth = 100;
+        eHealth = GetComponent<EnemyHealth>();
+        bHealth = GetComponent<BossHealth>();
     }
 
     // Update is called once per frame
@@ -190,6 +195,17 @@ public class PlayerScripts : MonoBehaviour
         {
             Debug.Log("hit enemy");
             enemyGameObject.GetComponent<EnemyHealth>().health -= 10;
+        }
+        
+    }
+
+    void PlayerAttackingBoss()
+    {
+        Collider2D[] boss = Physics2D.OverlapCircleAll(attackPoint.transform.position, radius, bosses);
+        foreach (Collider2D bossGameObject in boss)
+        {
+            Debug.Log("hit boss");
+            bossGameObject.GetComponent<BossHealth>().health -= 10;
         }
     }
 

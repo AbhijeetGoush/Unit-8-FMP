@@ -7623,6 +7623,9 @@ MonoBehaviour:
   enemies:
     serializedVersion: 2
     m_Bits: 8
+  bosses:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1001 &1119074888
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12179,7 +12182,7 @@ GameObject:
   - component: {fileID: 2076882653}
   - component: {fileID: 2076882657}
   - component: {fileID: 2076882658}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Skeleton Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12374,8 +12377,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2dc209e5a65fd247abbd86cdade178c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  currentHealth: 0
+  health: 100
+  currentHealth: 100
 --- !u!1 &2079996514
 GameObject:
   m_ObjectHideFlags: 0
