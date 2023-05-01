@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class CoinScript : MonoBehaviour
 {
-    public int score;
     public string text;
-
+    public GameObject scoreUpdaterObj;
+    ScoreUpdater sU;
     // Start is called before the first frame update
     void Start()
     {
-        score = 0;
+        sU = scoreUpdaterObj.GetComponent<ScoreUpdater>();
     }
 
     // Update is called once per frame
@@ -25,7 +25,7 @@ public class CoinScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            score++;
+            sU.score++;
             
             Destroy(this.gameObject);
             
