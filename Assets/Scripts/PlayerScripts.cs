@@ -248,6 +248,12 @@ public class PlayerScripts : MonoBehaviour
         {
             grounded = true;
         }
+        if (collision.gameObject.tag == "FloorBarrier")
+        {
+            Destroy(this.gameObject);
+            SceneManager.LoadScene("GameOver");
+        }
+
     }
     public void OnCollisionExit2D(Collision2D collision)
     {
