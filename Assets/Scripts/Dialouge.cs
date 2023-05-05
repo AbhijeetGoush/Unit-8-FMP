@@ -9,6 +9,9 @@ public class Dialouge : MonoBehaviour
     public TextMeshProUGUI goodWizard;
     public TextMeshProUGUI player;
     public GameObject cameraObj;
+    public GameObject fireGemPrefab;
+    public GameObject fireGemSpawn;
+    int gem;
     CameraScript cam;
     public int line;
 
@@ -20,6 +23,7 @@ public class Dialouge : MonoBehaviour
         goodWizard = goodWizard.GetComponent<TextMeshProUGUI>();
         player = player.GetComponent<TextMeshProUGUI>();
         cam = cameraObj.GetComponent<CameraScript>();
+        gem = 1;
     }
 
     // Update is called once per frame
@@ -28,6 +32,7 @@ public class Dialouge : MonoBehaviour
         if (line == 1)
         {
             goodWizard.text = "Hello brave knight";
+            
         }
         if (line == 2)
         {
@@ -108,7 +113,7 @@ public class Dialouge : MonoBehaviour
         }
         if (line == 18)
         {
-            player.text = "Oh but why?";
+            player.text = "Oh, but why?";
             goodWizard.text = "";
         }
         if (line == 19)
@@ -119,7 +124,7 @@ public class Dialouge : MonoBehaviour
         if (line == 20)
         {
             player.text = "";
-            goodWizard.text = "Now let me give you fireball powers";
+            goodWizard.text = "Now let me give you the Fire Gem";
         }
         if (line == 21)
         {
@@ -129,12 +134,14 @@ public class Dialouge : MonoBehaviour
         if (line == 22)
         {
             player.text = "";
-            goodWizard.text = "Ok stand still";
+            goodWizard.text = "Where'd I put it. Ahh here it is";
         }
-        if (line == 23)
+        if (line == 23 && (gem == 1))
         {
             player.text = "";
-            goodWizard.text = "*Grants you fireball powers*";
+            goodWizard.text = "*Drops fire gem*";
+            Instantiate(fireGemPrefab, fireGemSpawn.transform.position, Quaternion.identity);
+            gem--;
         }
         if (line == 24)
         {

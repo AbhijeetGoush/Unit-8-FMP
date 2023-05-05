@@ -486,7 +486,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &317791975
 GameObject:
@@ -882,6 +882,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8371205340900755803, guid: 0df044bc488c7a143b1b42d281b72522, type: 3}
   m_PrefabInstance: {fileID: 460065406}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &533173478
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 533173479}
+  m_Layer: 0
+  m_Name: Fire Gem Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &533173479
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 533173478}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2, y: -2, z: 2.4070482}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &594614941
 GameObject:
   m_ObjectHideFlags: 0
@@ -1232,7 +1263,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &791446540
 PrefabInstance:
@@ -1584,7 +1615,7 @@ RectTransform:
   - {fileID: 317791976}
   - {fileID: 1202735938}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1741,6 +1772,8 @@ MonoBehaviour:
   goodWizard: {fileID: 317791978}
   player: {fileID: 1202735939}
   cameraObj: {fileID: 1636423737}
+  fireGemPrefab: {fileID: 531840944647646107, guid: 4f8ddaa616d7ca3448c637b995ca3f4f, type: 3}
+  fireGemSpawn: {fileID: 533173478}
   line: 0
 --- !u!4 &1088894272 stripped
 Transform:
@@ -2056,7 +2089,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1205497345
 BoxCollider2D:
@@ -2431,7 +2464,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2139216487}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 3.825, y: -0.053, z: 0}
+  m_LocalPosition: {x: 3.825, y: 0.017, z: 0}
   m_LocalScale: {x: 0.25, y: 5.1278234, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
