@@ -6,10 +6,12 @@ public class GoodWizardScript : MonoBehaviour
 {
     PlayerScripts player;
     public GameObject playerObj;
+    GoodWizardScript goodWizard;
     // Start is called before the first frame update
     void Start()
     {
         player = playerObj.GetComponent<PlayerScripts>();
+        goodWizard = gameObject.GetComponent<GoodWizardScript>();
     }
 
     // Update is called once per frame
@@ -18,11 +20,5 @@ public class GoodWizardScript : MonoBehaviour
         
     }
 
-    void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            player.state = States.Talking;
-        }
-    }
+    
 }

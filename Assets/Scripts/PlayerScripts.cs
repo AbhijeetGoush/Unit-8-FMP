@@ -85,10 +85,6 @@ public class PlayerScripts : MonoBehaviour
         {
             PlayerAttack();
         }
-        if (state == States.Talking)
-        {
-            PlayerTalking();
-        }
     }
 
     void PlayerIdle()
@@ -236,15 +232,16 @@ public class PlayerScripts : MonoBehaviour
 
     }
 
-    async void PlayerTalking()
+    public void PlayerTalking()
     {
         Vector2 vel = rb.velocity;
         rb.velocity = vel;
 
         vel.x = 0;
-        await Task.Delay(3000);
-        state = States.Idle;
+        
+
     }
+    
 
     void ChangeAnimationState(string newState)
     {

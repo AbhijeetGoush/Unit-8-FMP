@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraScript : MonoBehaviour
 {
-    public Transform player;
+    private Transform player;
     public Vector3 offset;
     [Range(1, 10)]
     public float smoothFactor;
@@ -23,6 +23,11 @@ public class CameraScript : MonoBehaviour
             transform.position = playerPosition;
         }
         
+    }
+
+    public void FindPlayer()
+    {
+        player = GameObject.FindWithTag("Player").transform;
     }
 
 }

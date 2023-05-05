@@ -8,5 +8,5 @@ public enum States // used by all logic
     Landed,
     Dead,
     Attack,
-    Talking,
+
 };
