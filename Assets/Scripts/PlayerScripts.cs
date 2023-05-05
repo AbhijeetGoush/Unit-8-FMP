@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class PlayerScripts : MonoBehaviour
@@ -9,16 +11,21 @@ public class PlayerScripts : MonoBehaviour
     bool grounded;
     Animator anim;
     HelperScript helper;
+    EnemyHealth eHealth;
+    BossHealth bHealth;
     private string currentState;
     const string PLAYER_IDLE = "PlayerIdle";
     const string PLAYER_RUN = "PlayerRun";
     const string PLAYER_JUMP = "PlayerJump";
     const string PLAYER_ATTACK = "PlayerAttack";
+    const string PLAYER_DEATH = "PlayerDeath";
     public int playerHealth;
     public GameObject attackPoint;
     public GameObject attackpoint1;
+    public PlayerScripts player;
     public float radius;
     public LayerMask enemies;
+    public LayerMask bosses;
     
     // Start is called before the first frame update
     void Start()
@@ -29,6 +36,8 @@ public class PlayerScripts : MonoBehaviour
         anim = GetComponent<Animator>();
         helper = GetComponent<HelperScript>();
         playerHealth = 100;
+        eHealth = GetComponent<EnemyHealth>();
+        bHealth = GetComponent<BossHealth>();
     }
 
     // Update is called once per frame
@@ -42,6 +51,7 @@ public class PlayerScripts : MonoBehaviour
         {
             state = States.Dead;
         }
+        
     }
 
     void FixedUpdate()
@@ -70,6 +80,7 @@ public class PlayerScripts : MonoBehaviour
         {
             PlayerDead();
         }
+
         if (state == States.Attack)
         {
             PlayerAttack();
@@ -187,8 +198,19 @@ public class PlayerScripts : MonoBehaviour
         Collider2D[] enemy = Physics2D.OverlapCircleAll(attackPoint.transform.position, radius, enemies);
         foreach (Collider2D enemyGameObject in enemy)
         {
-            Debug.Log("hit enemy");
+            
             enemyGameObject.GetComponent<EnemyHealth>().health -= 10;
+        }
+        
+    }
+
+    void PlayerAttackingBoss()
+    {
+        Collider2D[] boss = Physics2D.OverlapCircleAll(attackPoint.transform.position, radius, bosses);
+        foreach (Collider2D bossGameObject in boss)
+        {
+            Debug.Log("hit boss");
+            bossGameObject.GetComponent<BossHealth>().health -= 10;
         }
     }
 
@@ -196,13 +218,19 @@ public class PlayerScripts : MonoBehaviour
     {
         playerHealth -= 25;
     }
-    void PlayerDead()
+    async void PlayerDead()
     {
         if (playerHealth <= 0)
         {
-            Destroy(this.gameObject);
+            ChangeAnimationState(PLAYER_DEATH);
+            await Task.Delay(1350);
+            if (player != null)
+            {
+                Destroy(this.gameObject);
+                SceneManager.LoadScene("GameOver");
+            }
         }
-        
+
     }
 
     void ChangeAnimationState(string newState)
@@ -220,6 +248,12 @@ public class PlayerScripts : MonoBehaviour
         {
             grounded = true;
         }
+        if (collision.gameObject.tag == "FloorBarrier")
+        {
+            Destroy(this.gameObject);
+            SceneManager.LoadScene("GameOver");
+        }
+
     }
     public void OnCollisionExit2D(Collision2D collision)
     {
