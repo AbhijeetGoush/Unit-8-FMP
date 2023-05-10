@@ -20,8 +20,10 @@ public class PlayerScripts : MonoBehaviour
     const string PLAYER_ATTACK = "PlayerAttack";
     const string PLAYER_DEATH = "PlayerDeath";
     public int playerHealth;
+    public bool canUseFireball;
     public GameObject attackPoint;
     public GameObject attackpoint1;
+    public GameObject fireGemHb;
     public PlayerScripts player;
     public float radius;
     public LayerMask enemies;
@@ -38,6 +40,7 @@ public class PlayerScripts : MonoBehaviour
         playerHealth = 100;
         eHealth = GetComponent<EnemyHealth>();
         bHealth = GetComponent<BossHealth>();
+        canUseFireball = false;
     }
 
     // Update is called once per frame
@@ -263,7 +266,11 @@ public class PlayerScripts : MonoBehaviour
             Destroy(this.gameObject);
             SceneManager.LoadScene("GameOver");
         }
-        
+        if (collision.gameObject.tag == "FireGemHb")
+        {
+            canUseFireball = true;
+            Destroy(fireGemHb);
+        }
 
     }
     public void OnCollisionExit2D(Collision2D collision)
@@ -279,5 +286,6 @@ public class PlayerScripts : MonoBehaviour
         Gizmos.DrawWireSphere(attackPoint.transform.position, radius);
     }
 
+    
 
 }

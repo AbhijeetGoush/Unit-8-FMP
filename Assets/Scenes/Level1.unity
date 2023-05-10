@@ -4490,12 +4490,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96bb6a5a78e11be4b9949bfd5dfc018f, type: 3}
+  m_Script: {fileID: 11500000, guid: b4a3179a9ed8f7b4998a6e56d01eb95c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1118580637}
-  offset: {x: 0, y: 0.9, z: -10}
-  smoothFactor: 6.06
+  offset: {x: 0, y: 0.99, z: -10}
+  smoothFactor: 0
 --- !u!4 &558896136 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7595325000893066835, guid: 8c42dae271106fd40a380a6f73c5f46f, type: 3}

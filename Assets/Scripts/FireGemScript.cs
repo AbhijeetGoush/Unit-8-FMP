@@ -5,11 +5,13 @@ using UnityEngine;
 public class FireGemScript : MonoBehaviour
 {
     PlayerScripts player;
-
+    public GameObject playerObj;
     // Start is called before the first frame update
     void Start()
     {
-        player = GetComponent<PlayerScripts>();
+        player = playerObj.GetComponent<PlayerScripts>();
+        playerObj = GameObject.FindWithTag("Player");
+
     }
 
     // Update is called once per frame
@@ -20,10 +22,12 @@ public class FireGemScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+
         if (collision.gameObject.tag == "Player")
         {
             Destroy(this.gameObject);
         }
+        
     }
 
 }

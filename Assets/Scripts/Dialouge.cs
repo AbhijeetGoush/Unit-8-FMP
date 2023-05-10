@@ -11,6 +11,8 @@ public class Dialouge : MonoBehaviour
     public GameObject cameraObj;
     public GameObject fireGemPrefab;
     public GameObject fireGemSpawn;
+    FireGemHb fireGemHb;
+    public GameObject fireGemHbObj;
     int gem;
     CameraScript cam;
     public int line;
@@ -24,6 +26,7 @@ public class Dialouge : MonoBehaviour
         player = player.GetComponent<TextMeshProUGUI>();
         cam = cameraObj.GetComponent<CameraScript>();
         gem = 1;
+        fireGemHb = fireGemHbObj.GetComponent<FireGemHb>();
     }
 
     // Update is called once per frame
@@ -142,6 +145,7 @@ public class Dialouge : MonoBehaviour
             goodWizard.text = "*Drops fire gem*";
             Instantiate(fireGemPrefab, fireGemSpawn.transform.position, Quaternion.identity);
             gem--;
+            fireGemHb.FindFireGemPos();
         }
         if (line == 24)
         {
