@@ -12,7 +12,7 @@ public class FireballPos : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -30,6 +30,8 @@ public class FireballPos : MonoBehaviour
             facingRight = true;
             facingLeft = false;
         }
-
+        
     }
+
+    
 }

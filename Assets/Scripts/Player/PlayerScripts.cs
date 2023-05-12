@@ -30,6 +30,7 @@ public class PlayerScripts : MonoBehaviour
     public float radius;
     public int fireballCount;
     public LayerMask enemies;
+    public LayerMask mushrooms;
     public LayerMask bosses;
     
     // Start is called before the first frame update
@@ -227,6 +228,17 @@ public class PlayerScripts : MonoBehaviour
             bossGameObject.GetComponent<BossHealth>().health -= 10;
         }
     }
+
+    void PlayerAttackingMushroom()
+    {
+        Collider2D[] mushroom = Physics2D.OverlapCircleAll(attackPoint.transform.position, radius, mushrooms);
+        foreach (Collider2D mushroomGameObject in mushroom)
+        {
+
+            mushroomGameObject.GetComponent<MushroomHealth>().health -= 10;
+        }
+    }
+
 
     public void PlayerTakeDamage()
     {

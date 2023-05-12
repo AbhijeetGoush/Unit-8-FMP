@@ -6,6 +6,13 @@ TagManager:
   tags:
   - platform
   - Barrier
+  - FireGem
+  - PlayerObjA
+  - FloorBarrier
+  - Good Wizard
+  - FireGemHb
+  - FireBallSpawner
+  - Fireball
   layers:
   - Default
   - TransparentFX
@@ -14,7 +21,7 @@ TagManager:
   - Water
   - UI
   - Boss
-  - 
+  - Mushroom
   - 
   - 
   - 
