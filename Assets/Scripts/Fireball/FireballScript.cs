@@ -15,7 +15,6 @@ public class FireballScript : MonoBehaviour
     {
         transform.localEulerAngles = new Vector3(0, 0, 90);
         
-        
     }
 
     // Update is called once per frame
@@ -24,5 +23,5 @@ public class FireballScript : MonoBehaviour
         transform.position = new Vector3(transform.position.x + (speed * Time.deltaTime), transform.position.y, transform.position.z);
     }
     
-    
+
 }

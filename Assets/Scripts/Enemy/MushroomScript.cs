@@ -164,6 +164,15 @@ public class MushroomScript : MonoBehaviour
             speed = 0f;
         }
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Fireball")
+        {
+            ChangeAnimationState(SKELETON_DEATH);
+            Destroy(this.gameObject);
+            Destroy(collision.gameObject);
+        }
+    }
 
     void OnTriggerExit2D(Collider2D collision)
     {
