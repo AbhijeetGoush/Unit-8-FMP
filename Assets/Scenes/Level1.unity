@@ -4979,6 +4979,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &679286296
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 679286297}
+  m_Layer: 0
+  m_Name: Fireball Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &679286297
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679286296}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.236, y: 0.236, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1118580637}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &691987043
 GameObject:
   m_ObjectHideFlags: 0
@@ -8072,6 +8103,7 @@ Transform:
   - {fileID: 1784801074}
   - {fileID: 999747226}
   - {fileID: 118150989}
+  - {fileID: 679286297}
   m_Father: {fileID: 0}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8121,8 +8153,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   playerHealth: 100
+  canUseFireball: 0
   attackPoint: {fileID: 1784801073}
   attackpoint1: {fileID: 0}
+  fireGemHb: {fileID: 0}
+  fireballPrefab: {fileID: 0}
+  fireballSpawner: {fileID: 0}
   player: {fileID: 1118580641}
   radius: 0.66
   enemies:

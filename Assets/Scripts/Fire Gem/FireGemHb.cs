@@ -26,7 +26,7 @@ public class FireGemHb : MonoBehaviour
     {
         fireGem = GameObject.FindWithTag("FireGem").transform;
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {

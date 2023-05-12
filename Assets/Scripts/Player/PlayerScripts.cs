@@ -24,8 +24,11 @@ public class PlayerScripts : MonoBehaviour
     public GameObject attackPoint;
     public GameObject attackpoint1;
     public GameObject fireGemHb;
+    public GameObject fireballPrefab;
+    public Transform fireballSpawner;
     public PlayerScripts player;
     public float radius;
+    public int fireballCount;
     public LayerMask enemies;
     public LayerMask bosses;
     
@@ -41,6 +44,7 @@ public class PlayerScripts : MonoBehaviour
         eHealth = GetComponent<EnemyHealth>();
         bHealth = GetComponent<BossHealth>();
         canUseFireball = false;
+        fireballCount = 2;
     }
 
     // Update is called once per frame
@@ -54,7 +58,15 @@ public class PlayerScripts : MonoBehaviour
         {
             state = States.Dead;
         }
-        
+        if (Input.GetKeyDown(KeyCode.F) && (canUseFireball == true))
+        {
+            Fireball();
+            fireballCount--;
+        }
+        if (fireballCount <= -1)
+        {
+            state = States.Dead;
+        }
     }
 
     void FixedUpdate()
@@ -233,6 +245,17 @@ public class PlayerScripts : MonoBehaviour
             }
         }
 
+        if (fireballCount <= -1)
+        {
+            ChangeAnimationState(PLAYER_DEATH);
+            await Task.Delay(1350);
+            if (player != null)
+            {
+                Destroy(this.gameObject);
+                SceneManager.LoadScene("GameOver");
+            }
+        }
+        
     }
 
     public void PlayerTalking()
@@ -245,6 +268,14 @@ public class PlayerScripts : MonoBehaviour
 
     }
     
+    void Fireball()
+    {
+        if (fireballCount > 0)
+        {
+            Instantiate(fireballPrefab, fireballSpawner.transform.position, Quaternion.identity);
+        }
+        
+    }
 
     void ChangeAnimationState(string newState)
     {
@@ -266,13 +297,18 @@ public class PlayerScripts : MonoBehaviour
             Destroy(this.gameObject);
             SceneManager.LoadScene("GameOver");
         }
+        
+
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
         if (collision.gameObject.tag == "FireGemHb")
         {
             canUseFireball = true;
             Destroy(fireGemHb);
         }
-
     }
+
     public void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "platform")
