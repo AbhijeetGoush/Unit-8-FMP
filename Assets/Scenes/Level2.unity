@@ -1562,6 +1562,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1348038182}
   m_SourcePrefab: {fileID: 100100000, guid: 7a128d747bd45be40895fb05a9b2d1ce, type: 3}
+--- !u!1 &791446541 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2761216830621283476, guid: 7a128d747bd45be40895fb05a9b2d1ce, type: 3}
+  m_PrefabInstance: {fileID: 791446540}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &824154860
 GameObject:
   m_ObjectHideFlags: 0
@@ -1717,7 +1722,7 @@ MonoBehaviour:
   speed: 2
   player: {fileID: 2020271894}
   Mushroom: {fileID: 3982347148257003502}
-  playerO: {fileID: 0}
+  playerO: {fileID: 791446541}
 --- !u!114 &975270237
 MonoBehaviour:
   m_ObjectHideFlags: 0

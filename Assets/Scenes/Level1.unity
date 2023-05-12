@@ -5057,7 +5057,6 @@ MonoBehaviour:
   fireballSpawner: {fileID: 679286297}
   fireballSpawnerFront: {fileID: 1335970853}
   fireballSpawnerBehind: {fileID: 438983348}
-  fireball: {fileID: 4457941132359194244, guid: 40ac218ad653f4b478e1a9282781baca, type: 3}
   facingLeft: 0
   facingRight: 0
 --- !u!1 &691987043
@@ -8029,7 +8028,6 @@ GameObject:
   - component: {fileID: 1118580639}
   - component: {fileID: 1118580640}
   - component: {fileID: 1118580641}
-  - component: {fileID: 1118580642}
   - component: {fileID: 1118580643}
   m_Layer: 0
   m_Name: Player
@@ -8217,21 +8215,12 @@ MonoBehaviour:
   enemies:
     serializedVersion: 2
     m_Bits: 8
+  mushrooms:
+    serializedVersion: 2
+    m_Bits: 0
   bosses:
     serializedVersion: 2
     m_Bits: 64
---- !u!114 &1118580642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1118580633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ecd44cbd933ecf4ab3922faf428a562, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1118580643
 MonoBehaviour:
   m_ObjectHideFlags: 0
