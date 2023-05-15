@@ -15,6 +15,9 @@ public class PlayerDialouge : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerDialouge.transform.position = playerAbove.position;
+        if (playerAbove != null)
+        {
+            playerDialouge.transform.position = playerAbove.position;
+        }
     }
 }

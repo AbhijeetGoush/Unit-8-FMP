@@ -8,8 +8,8 @@ public class FireballScript : MonoBehaviour
 {
     FireballPos fireballPos;
     public float speed = 10f;
-    bool facingLeft;
-    bool facingRight;
+    public bool facingLeft;
+    public bool facingRight;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +20,16 @@ public class FireballScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(transform.position.x + (speed * Time.deltaTime), transform.position.y, transform.position.z);
+        if (facingLeft == true)
+        {
+            transform.localScale = new Vector3(-3, -3, 0);
+            transform.position = new Vector3(transform.position.x + (-speed * Time.deltaTime), transform.position.y, transform.position.z);
+        }
+        if (facingRight == true)
+        {
+            transform.localScale = new Vector3(-3, 3, 0);
+            transform.position = new Vector3(transform.position.x + (speed * Time.deltaTime), transform.position.y, transform.position.z);
+        }
     }
     
 

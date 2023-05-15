@@ -124,7 +124,6 @@ GameObject:
   - component: {fileID: 2761216830621283474}
   - component: {fileID: 2761216830621283501}
   - component: {fileID: 2761216830621283500}
-  - component: {fileID: 2761216830621283503}
   - component: {fileID: 2761216830621283502}
   m_Layer: 0
   m_Name: Player
@@ -295,29 +294,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+  fireballObj: {fileID: 0}
   playerHealth: 100
+  canUseFireball: 0
   attackPoint: {fileID: 2761216830232017980}
   attackpoint1: {fileID: 0}
+  fireGemHb: {fileID: 0}
+  fireballPrefab: {fileID: 0}
+  fireballSpawner: {fileID: 0}
   player: {fileID: 2761216830621283500}
   radius: 0.66
+  fireballCount: 0
   enemies:
     serializedVersion: 2
     m_Bits: 8
+  mushrooms:
+    serializedVersion: 2
+    m_Bits: 0
   bosses:
     serializedVersion: 2
     m_Bits: 64
---- !u!114 &2761216830621283503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2761216830621283476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ecd44cbd933ecf4ab3922faf428a562, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2761216830621283502
 MonoBehaviour:
   m_ObjectHideFlags: 0

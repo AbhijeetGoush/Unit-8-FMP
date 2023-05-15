@@ -13,6 +13,8 @@ public class PlayerScripts : MonoBehaviour
     HelperScript helper;
     EnemyHealth eHealth;
     BossHealth bHealth;
+    FireballScript fireball;
+    public GameObject fireballObj;
     private string currentState;
     const string PLAYER_IDLE = "PlayerIdle";
     const string PLAYER_RUN = "PlayerRun";
@@ -32,7 +34,7 @@ public class PlayerScripts : MonoBehaviour
     public LayerMask enemies;
     public LayerMask mushrooms;
     public LayerMask bosses;
-    
+    public LayerMask flyingEyes;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +46,7 @@ public class PlayerScripts : MonoBehaviour
         playerHealth = 100;
         eHealth = GetComponent<EnemyHealth>();
         bHealth = GetComponent<BossHealth>();
+        fireball = fireballObj.GetComponent<FireballScript>();
         canUseFireball = false;
         fireballCount = 2;
     }
@@ -67,6 +70,16 @@ public class PlayerScripts : MonoBehaviour
         if (fireballCount <= -1)
         {
             state = States.Dead;
+        }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            fireball.facingLeft = true;
+            fireball.facingRight = false;
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            fireball.facingRight = true;
+            fireball.facingLeft = false;
         }
     }
 
@@ -226,6 +239,15 @@ public class PlayerScripts : MonoBehaviour
         {
             Debug.Log("hit boss");
             bossGameObject.GetComponent<BossHealth>().health -= 10;
+        }
+    }
+
+    void PlayerAttackingFlyingEye()
+    {
+        Collider2D[] flyingEye = Physics2D.OverlapCircleAll(attackPoint.transform.position, radius, flyingEyes);
+        foreach (Collider2D flyingEyeGameObject in flyingEye)
+        {
+            flyingEyeGameObject.GetComponent<FlyingEyeHealth>().health -= 10;
         }
     }
 

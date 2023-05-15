@@ -11,6 +11,7 @@ public class Dialouge : MonoBehaviour
     public GameObject cameraObj;
     public GameObject fireGemPrefab;
     public GameObject fireGemSpawn;
+    public GameObject rightBarrier;
     FireGemHb fireGemHb;
     public GameObject fireGemHbObj;
     int gem;
@@ -176,6 +177,7 @@ public class Dialouge : MonoBehaviour
         {
             player.text = "";
             goodWizard.text = "";
+            Destroy(rightBarrier);
             cam.FindPlayer();
         }
     }
