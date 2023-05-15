@@ -21,5 +21,9 @@ public class LoadScene : MonoBehaviour
         player.transform.position = new Vector3(-8, -2);
     }
 
+    public void PlayAgain(int sceneID)
+    {
+        SceneManager.LoadScene(sceneID);
+    }
 
 }

@@ -50,7 +50,7 @@ public class FlyingEye : MonoBehaviour
     }
     public void EnemyTakeHit()
     {
-
+        ChangeAnimationState(FLYING_EYE_HIT);
     }
     public void EnemyDead()
     {
