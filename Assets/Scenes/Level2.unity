@@ -3489,6 +3489,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2761216830621283500, guid: 7a128d747bd45be40895fb05a9b2d1ce, type: 3}
+      propertyPath: cameraObj
+      value: 
+      objectReference: {fileID: 1636423737}
+    - target: {fileID: 2761216830621283500, guid: 7a128d747bd45be40895fb05a9b2d1ce, type: 3}
       propertyPath: fireGemHb
       value: 
       objectReference: {fileID: 1855671506}
@@ -3496,6 +3500,10 @@ PrefabInstance:
       propertyPath: fireballObj
       value: 
       objectReference: {fileID: 4457941132359194244, guid: 40ac218ad653f4b478e1a9282781baca, type: 3}
+    - target: {fileID: 2761216830621283500, guid: 7a128d747bd45be40895fb05a9b2d1ce, type: 3}
+      propertyPath: rightBarrier
+      value: 
+      objectReference: {fileID: 2119656448}
     - target: {fileID: 2761216830621283500, guid: 7a128d747bd45be40895fb05a9b2d1ce, type: 3}
       propertyPath: fireballPrefab
       value: 
@@ -6795,6 +6803,7 @@ GameObject:
   - component: {fileID: 1470788014}
   - component: {fileID: 1470788016}
   - component: {fileID: 1470788017}
+  - component: {fileID: 1470788018}
   m_Layer: 9
   m_Name: Goblin Boss
   m_TagString: Untagged
@@ -6903,7 +6912,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointA: {fileID: 2075117717}
   pointB: {fileID: 198709763}
-  speed: 15
+  speed: 8
   player: {fileID: 2020271894}
   Goblin: {fileID: 1470788009}
   playerO: {fileID: 791446541}
@@ -7032,6 +7041,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   currentHealth: 100
+--- !u!114 &1470788018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470788007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55cb1d9681d722a4da81ee3e6dd81954, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1478678830 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8371205340900755803, guid: 0df044bc488c7a143b1b42d281b72522, type: 3}

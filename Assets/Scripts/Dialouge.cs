@@ -112,7 +112,7 @@ public class Dialouge : MonoBehaviour
         }
         if (line == 17)
         {
-            goodWizard.text = "Don't get too excited you can only use it twice or you will die";
+            goodWizard.text = "Don't get too excited you can only use it twice per level or you will die";
             player.text = "";
         }
         if (line == 18)
@@ -177,8 +177,6 @@ public class Dialouge : MonoBehaviour
         {
             player.text = "";
             goodWizard.text = "";
-            Destroy(rightBarrier);
-            cam.FindPlayer();
         }
     }
     public void Count()

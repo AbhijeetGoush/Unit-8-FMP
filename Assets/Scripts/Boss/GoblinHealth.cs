@@ -7,6 +7,7 @@ public class GoblinHealth : MonoBehaviour
     public float health;
     public float currentHealth;
     Animator anim;
+    LoadScene scene;
     GoblinBoss goblinBoss;
 
     // Start is called before the first frame update
@@ -14,7 +15,7 @@ public class GoblinHealth : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         currentHealth = health;
-
+        scene = GetComponent<LoadScene>();
     }
 
     // Update is called once per frame
@@ -33,6 +34,7 @@ public class GoblinHealth : MonoBehaviour
         if (health <= 0)
         {
             goblinBoss.EnemyDead();
+            scene.LoadScene3();
         }
     }
 }

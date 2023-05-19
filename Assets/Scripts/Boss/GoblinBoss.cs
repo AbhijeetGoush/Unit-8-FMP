@@ -25,6 +25,7 @@ public class GoblinBoss : MonoBehaviour
     const string SKELETON_TAKE_HIT = "Goblin Take Hit";
     const string SKELETON_DEATH = "Goblin Death";
     public GameObject playerO;
+    LoadScene scene;
     MStates state;
     // Start is called before the first frame update
     void Start()
@@ -38,7 +39,7 @@ public class GoblinBoss : MonoBehaviour
         enemyAttack = false;
         goblinHealth = GetComponent<GoblinHealth>();
         playerS = playerO.GetComponent<PlayerScripts>();
-
+        scene = GetComponent<LoadScene>();
 
     }
 
@@ -164,10 +165,15 @@ public class GoblinBoss : MonoBehaviour
     {
         if (collision.gameObject.tag == "Fireball")
         {
-            ChangeAnimationState(SKELETON_DEATH);
-            Destroy(this.gameObject);
+            ChangeAnimationState(SKELETON_TAKE_HIT);
             Destroy(collision.gameObject);
+            goblinHealth.health -= 50;
+            if (goblinHealth.health <= 0)
+            {
+                scene.LoadScene3();
+            }
         }
+        
     }
 
     void OnTriggerExit2D(Collider2D collision)

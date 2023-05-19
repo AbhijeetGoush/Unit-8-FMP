@@ -14,7 +14,9 @@ public class PlayerScripts : MonoBehaviour
     EnemyHealth eHealth;
     BossHealth bHealth;
     FireballScript fireball;
+    CameraScript cam;
     public GameObject fireballObj;
+    public GameObject rightBarrier;
     private string currentState;
     const string PLAYER_IDLE = "PlayerIdle";
     const string PLAYER_RUN = "PlayerRun";
@@ -27,6 +29,7 @@ public class PlayerScripts : MonoBehaviour
     public GameObject attackpoint1;
     public GameObject fireGemHb;
     public GameObject fireballPrefab;
+    public GameObject cameraObj;
     public Transform fireballSpawner;
     public PlayerScripts player;
     public float radius;
@@ -48,6 +51,7 @@ public class PlayerScripts : MonoBehaviour
         eHealth = GetComponent<EnemyHealth>();
         bHealth = GetComponent<BossHealth>();
         fireball = fireballObj.GetComponent<FireballScript>();
+        cam = cameraObj.GetComponent<CameraScript>();
         canUseFireball = false;
         fireballCount = 2;
     }
@@ -350,6 +354,8 @@ public class PlayerScripts : MonoBehaviour
         if (collision.gameObject.tag == "FireGemHb")
         {
             canUseFireball = true;
+            Destroy(rightBarrier);
+            cam.FindPlayer();
             Destroy(fireGemHb);
         }
     }
