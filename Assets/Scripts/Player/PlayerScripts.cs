@@ -35,6 +35,7 @@ public class PlayerScripts : MonoBehaviour
     public LayerMask mushrooms;
     public LayerMask bosses;
     public LayerMask flyingEyes;
+    public LayerMask goblins;
     // Start is called before the first frame update
     void Start()
     {
@@ -258,6 +259,16 @@ public class PlayerScripts : MonoBehaviour
         {
 
             mushroomGameObject.GetComponent<MushroomHealth>().health -= 10;
+        }
+    }
+
+    void PlayerAttackingGoblin()
+    {
+        Collider2D[] goblin = Physics2D.OverlapCircleAll(attackPoint.transform.position, radius, goblins);
+        foreach (Collider2D goblinGameObject in goblin)
+        {
+
+            goblinGameObject.GetComponent<GoblinHealth>().health -= 10;
         }
     }
 
