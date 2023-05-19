@@ -16,6 +16,7 @@ public class MushroomScript : MonoBehaviour
     public Transform player;
     public Transform Mushroom;
     private Animator anim;
+    MushroomScript mushroom;
     BoxCollider2D boxCollider;
     private string currentState;
     bool enemyAttack;
@@ -55,6 +56,7 @@ public class MushroomScript : MonoBehaviour
             state = MStates.Patrol;
         }
         playerO = GameObject.Find("Player");
+
     }
 
     void DoLogic()
@@ -168,9 +170,18 @@ public class MushroomScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Fireball")
         {
-            ChangeAnimationState(SKELETON_DEATH);
-            Destroy(this.gameObject);
-            Destroy(collision.gameObject);
+            StartCoroutine(deaths());
+            IEnumerator deaths()
+            {
+                ChangeAnimationState(SKELETON_DEATH);
+                Destroy(collision.gameObject);
+
+                yield return new WaitForSeconds(0.6f);
+
+                Destroy(this.gameObject);
+
+            }
+
         }
     }
 
