@@ -12,6 +12,10 @@ public class DialougeManager : MonoBehaviour
     public GameObject dialougeBarrier2Obj;
     public Transform dialougeBarrier3;
     public GameObject dialougeBarrier3Obj;
+    public Transform dialougeBarrier4;
+    public GameObject dialougeBarrier4Obj;
+    public Transform dialougeBarrier5;
+    public GameObject dialougeBarrier5Obj;
     public Transform player;
     // Start is called before the first frame update
     void Start()
@@ -45,7 +49,25 @@ public class DialougeManager : MonoBehaviour
             if (player.transform.position.x > dialougeBarrier3.transform.position.x)
             {
                 wizardDialouge.line = 3;
-                Destroy(dialougeBarrier2Obj);
+                Destroy(dialougeBarrier3Obj);
+            }
+        }
+
+        if (dialougeBarrier4 != null)
+        {
+            if (player.transform.position.y < dialougeBarrier4.transform.position.y)
+            {
+                wizardDialouge.line = 4;
+                Destroy(dialougeBarrier4Obj);
+            }
+        }
+
+        if (dialougeBarrier5 != null)
+        {
+            if (player.transform.position.x > dialougeBarrier5.transform.position.x)
+            {
+                wizardDialouge.line = 5;
+                Destroy(dialougeBarrier5Obj);
             }
         }
 

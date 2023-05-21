@@ -11,6 +11,7 @@ public class EvilWizardDialouge : MonoBehaviour
     void Start()
     {
         evilWizardDialouge = GetComponent<TextMeshProUGUI>();
+        line = 0;
     }
 
     // Update is called once per frame
@@ -27,6 +28,14 @@ public class EvilWizardDialouge : MonoBehaviour
         if (line == 3)
         {
             evilWizardDialouge.text = "Because I will abolish this world";
+        }
+        if (line == 4)
+        {
+            evilWizardDialouge.text = "NOW DIE!!!";
+        }
+        if(line == 5)
+        {
+            evilWizardDialouge.text = "";
         }
     }
 

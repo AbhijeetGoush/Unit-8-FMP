@@ -8120,12 +8120,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   fireballObj: {fileID: 4457941132359194244, guid: 40ac218ad653f4b478e1a9282781baca, type: 3}
+  rightBarrier: {fileID: 0}
   playerHealth: 100
   canUseFireball: 0
   attackPoint: {fileID: 1784801073}
   attackpoint1: {fileID: 0}
   fireGemHb: {fileID: 0}
   fireballPrefab: {fileID: 4457941132359194244, guid: 40ac218ad653f4b478e1a9282781baca, type: 3}
+  cameraObj: {fileID: 519420028}
   fireballSpawner: {fileID: 679286297}
   player: {fileID: 1118580641}
   radius: 0.66
@@ -8142,6 +8144,9 @@ MonoBehaviour:
   flyingEyes:
     serializedVersion: 2
     m_Bits: 0
+  goblins:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &1118580643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8154,7 +8159,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55cb1d9681d722a4da81ee3e6dd81954, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1118580633}
 --- !u!1001 &1119074888
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12771,7 +12775,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55cb1d9681d722a4da81ee3e6dd81954, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
 --- !u!1 &2079996514
 GameObject:
   m_ObjectHideFlags: 0
