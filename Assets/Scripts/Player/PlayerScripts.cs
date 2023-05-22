@@ -39,6 +39,10 @@ public class PlayerScripts : MonoBehaviour
     public LayerMask bosses;
     public LayerMask flyingEyes;
     public LayerMask goblins;
+    public LayerMask wizards;
+
+    public GameObject Wizard;
+    EvilWizardHealth bossscript;
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +58,8 @@ public class PlayerScripts : MonoBehaviour
         cam = cameraObj.GetComponent<CameraScript>();
         canUseFireball = false;
         fireballCount = 2;
+
+        bossscript = Wizard.GetComponent<EvilWizardHealth>();
     }
 
     // Update is called once per frame
@@ -86,6 +92,7 @@ public class PlayerScripts : MonoBehaviour
             fireball.facingRight = true;
             fireball.facingLeft = false;
         }
+
     }
 
     void FixedUpdate()
@@ -276,12 +283,29 @@ public class PlayerScripts : MonoBehaviour
         }
     }
 
+    void PlayerAttackingWizard()
+    {
+        Collider2D[] wizard = Physics2D.OverlapCircleAll(attackPoint.transform.position, radius, wizards);
+        foreach (Collider2D wizardGameObject in wizard)
+        {
+
+            wizardGameObject.GetComponent<EvilWizardHealth>().health -= 10;
+        }
+    }
+
 
     public void PlayerTakeDamage()
     {
         playerHealth -= 25;
+
+        
     }
-    async void PlayerDead()
+
+    void PlayerTakeDamageWizard()
+    {
+        playerHealth -= 50;
+    }
+    public async void PlayerDead()
     {
         if (playerHealth <= 0)
         {
@@ -346,7 +370,11 @@ public class PlayerScripts : MonoBehaviour
             Destroy(this.gameObject);
             SceneManager.LoadScene("GameOver");
         }
-        
+        if (collision.gameObject.tag == "Boss Fire")
+        {
+            PlayerTakeDamageWizard();
+            Destroy(collision.gameObject);
+        }
 
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -372,6 +400,8 @@ public class PlayerScripts : MonoBehaviour
     {
         Gizmos.DrawWireSphere(attackPoint.transform.position, radius);
     }
+
+    
 
     
 

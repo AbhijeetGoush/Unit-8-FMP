@@ -9,7 +9,7 @@ public class PlayerDialouge : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerAbove = GameObject.FindWithTag("PlayerObjA").transform;
+        
     }
 
     // Update is called once per frame
