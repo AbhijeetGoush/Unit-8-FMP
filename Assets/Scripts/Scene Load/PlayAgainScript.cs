@@ -20,4 +20,9 @@ public class PlayAgainScript : MonoBehaviour
     {
         SceneManager.LoadScene(sceneID);
     }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }
