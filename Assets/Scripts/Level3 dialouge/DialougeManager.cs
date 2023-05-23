@@ -26,48 +26,51 @@ public class DialougeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (dialougeBarrier1 != null)
+        if ( player != null )
         {
-            if (player.transform.position.x > dialougeBarrier1.transform.position.x)
+            if (dialougeBarrier1 != null)
             {
-                wizardDialouge.line = 1;
-                Destroy(dialougeBarrier1Obj);
+                if (player.transform.position.x > dialougeBarrier1.transform.position.x)
+                {
+                    wizardDialouge.line = 1;
+                    Destroy(dialougeBarrier1Obj);
+                }
             }
-        }
 
-        if (dialougeBarrier2 != null)
-        {
-            if (player.transform.position.x > dialougeBarrier2.transform.position.x)
+            if (dialougeBarrier2 != null)
             {
-                wizardDialouge.line = 2;
-                Destroy(dialougeBarrier2Obj);
+                if (player.transform.position.x > dialougeBarrier2.transform.position.x)
+                {
+                    wizardDialouge.line = 2;
+                    Destroy(dialougeBarrier2Obj);
+                }
             }
-        }
 
-        if (dialougeBarrier3 != null)
-        {
-            if (player.transform.position.x > dialougeBarrier3.transform.position.x)
+            if (dialougeBarrier3 != null)
             {
-                wizardDialouge.line = 3;
-                Destroy(dialougeBarrier3Obj);
+                if (player.transform.position.x > dialougeBarrier3.transform.position.x)
+                {
+                    wizardDialouge.line = 3;
+                    Destroy(dialougeBarrier3Obj);
+                }
             }
-        }
 
-        if (dialougeBarrier4 != null)
-        {
-            if (player.transform.position.y < dialougeBarrier4.transform.position.y)
+            if (dialougeBarrier4 != null)
             {
-                wizardDialouge.line = 4;
-                Destroy(dialougeBarrier4Obj);
+                if (player.transform.position.y < dialougeBarrier4.transform.position.y)
+                {
+                    wizardDialouge.line = 4;
+                    Destroy(dialougeBarrier4Obj);
+                }
             }
-        }
 
-        if (dialougeBarrier5 != null)
-        {
-            if (player.transform.position.x > dialougeBarrier5.transform.position.x)
+            if (dialougeBarrier5 != null)
             {
-                wizardDialouge.line = 5;
-                Destroy(dialougeBarrier5Obj);
+                if (player.transform.position.x > dialougeBarrier5.transform.position.x)
+                {
+                    wizardDialouge.line = 5;
+                    Destroy(dialougeBarrier5Obj);
+                }
             }
         }
 

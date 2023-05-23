@@ -41,8 +41,7 @@ public class PlayerScripts : MonoBehaviour
     public LayerMask goblins;
     public LayerMask wizards;
 
-    public GameObject Wizard;
-    EvilWizardHealth bossscript;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -59,7 +58,7 @@ public class PlayerScripts : MonoBehaviour
         canUseFireball = false;
         fireballCount = 2;
 
-        bossscript = Wizard.GetComponent<EvilWizardHealth>();
+        
     }
 
     // Update is called once per frame
