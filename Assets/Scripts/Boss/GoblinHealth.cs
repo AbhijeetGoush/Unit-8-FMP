@@ -24,7 +24,7 @@ public class GoblinHealth : MonoBehaviour
         if (health < currentHealth)
         {
             currentHealth = health;
-            anim.Play("MushroomTakeHit");
+            anim.Play("Goblin Take Hit");
 
             goblinBoss = GetComponent<GoblinBoss>();
             goblinBoss.EnemyTakeHit();
